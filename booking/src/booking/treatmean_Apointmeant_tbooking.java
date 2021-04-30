@@ -1,0 +1,1300 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package booking;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author SAPPHIRE
+ */
+public class treatmean_Apointmeant_tbooking extends javax.swing.JFrame {
+  
+//        Physician p1 = new Physician("Physiotherapy", 2, 01, "Syed Abeer", "rasul", "03348203785");
+    int global_index;
+          int index_for_booking;
+int error = 1;
+ int count = 15;
+        
+Physician[] phy_array = new Physician[5];
+Treatmeant[] treat_array = new Treatmeant[10];
+Patient[] patient_arrays = new Patient[30];
+DefaultTableModel tblmodel_phy;
+DefaultTableModel tblmodel_trt;
+DefaultTableModel tblmodel_trt2;
+DefaultTableModel tblmodel_appointmeant;
+DefaultTableModel tblmodel_patients;
+DefaultTableModel tblmodel_Visitorbooking;
+
+//phy_array[0] = new Physician("Physiotherapy", 2, 01, "Syed Abeer", "rasul", "03348203785");
+
+    /**
+     * Creates new form treatmean_Apointmeant_tbooking
+     */
+    public treatmean_Apointmeant_tbooking() {
+        initComponents();
+        
+
+ phy_array[0] = new Physician("Physiotherapy", "8am-8:30am,8:30am-9:30am,9:30am-10am, Monday", "11am-11:30am,11:30am-12:00pm,12:00pm-12:30pm,12:30pm-1:00pm,  Tuesday", "01", "Syed Abeer","Lahore", "0123");
+ phy_array[1] = new Physician("Osteopathy", "2pm-2:30pm,2:30pm-3:00pm,3:00pm-3:30pm,3:30pm-4:00pm,  Wednesday", "5pm-5:30pm,5:30pm-6:00pm,6:00pm-6:30pm,6:30pm-7:00p, Thursday", "02", "Ali","karachi", "0123");
+ phy_array[2] = new Physician("Osteopathy", "8pm-8:30pm,8:30pm-9:30pm,9:30pm-10pm, Friday", "11pm-11:30pm,11:30pm-12:00pm,12:00pm-12:30pm,12:30pm-1:00pm, Saturday", "03", "Ahmed","islamabad", "0123");
+ phy_array[3] = new Physician("Rehabilitation", "2pm-2:30pm,2:30pm-3:00pm,3:00pm-3:30pm,3:30pm-4:00pm, Monday", "5pm-5:30pm,5:30pm-6:00pm,6:00pm-6:30pm,6:30pm-7:00pm,  Thursday", "04", "Raza","mandi", "0123");
+ phy_array[4] = new Physician("Rehabilitation", "2pm-2:30pm,2:30pm-3:00pm,3:00pm-3:30pm,3:30pm-4:00pm Friday", "5pm-5:30pm,5:30pm-6:00pm,6:00pm-6:30pm,6:30pm-7:00pm, Tuesday", "05", "David","phalia", "0123");
+ 
+ Room r1 = new Room(" A");
+ Room r2 = new Room(" B");
+ Room r3 = new Room(" C" );
+ Room r4 = new Room("gym");
+ Room r5 = new Room("swimming pool");
+ 
+  treat_array[0]  = new Treatmeant("none", "none", "Neural mobilisation", r1, phy_array[0], "Saturday 1 May 2021", "14:00-15:00");
+
+ treat_array[1]  = new Treatmeant("none","none","Acupuncture", r2, phy_array[0], "Sunday 2 May 2021", "15:00-16:00");
+ treat_array[2]  = new Treatmeant("none","none","Massage", r3, phy_array[1], "Sunday 2 May 2021", "15:00-16:00");
+ treat_array[3]  = new Treatmeant("none","none","Acupuncture", r2, phy_array[1], "Thursday 6 May 2021", "08:00-09:00");
+ treat_array[4]  = new Treatmeant("none","none","Massage", r3, phy_array[3], "Monday 10 May 2021", "10:00-11:00");
+ treat_array[5]  = new Treatmeant("none","none","Mobilisation of the spine and joints", r4, phy_array[0], "Monday 10 May 2021", "10:00-11:00");
+ treat_array[6]  = new Treatmeant("none","none","Pool Rehabilitation", r5, phy_array[3], "Saturday 15 May 2021", "11:00-12:00");
+ treat_array[7]  = new Treatmeant("none","none","Massage", r3, phy_array[2], "Sunday 16 May 2021", "15:00-16:00");
+ treat_array[8]  = new Treatmeant("none","none","Acupuncture", r2, phy_array[2], "Sunday 16 May 2021", "15:00-16:00");
+ treat_array[9]  = new Treatmeant("none","none","Neural mobilisation", r1, phy_array[4], "Saturday 25 May 2021", "06:00-07:00");
+ 
+ 
+ patient_arrays[0] = new Patient("001", "patient001", "add1", "cell");
+ patient_arrays[1] = new Patient("002", "patient002", "add2", "cell");
+ patient_arrays[2] = new Patient("003", "patient003", "add3", "cell");
+ patient_arrays[3] = new Patient("004", "patient004", "add4", "cell");
+ patient_arrays[4] = new Patient("005", "patient005", "add5", "cell");
+ patient_arrays[5] = new Patient("006", "patient006", "add6", "cell");
+ patient_arrays[6] = new Patient("007", "patient007", "add7", "cell");
+ patient_arrays[7] = new Patient("008", "patient008", "add8", "cell");
+ patient_arrays[8] = new Patient("009", "patient009", "add9", "cell");
+ patient_arrays[9] = new Patient("0010", "patient010", "add10", "cell");
+ patient_arrays[10] = new Patient("0011", "patient011", "add11", "cell");
+ patient_arrays[11] = new Patient("0012", "patient012", "add12", "cell");
+ patient_arrays[12] = new Patient("0013", "patient013", "add13", "cell");
+ patient_arrays[13] = new Patient("0014", "patient014", "add14", "cell");
+ patient_arrays[14] = new Patient("0015", "patient015", "add15", "cell");
+
+    }
+    
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblphy = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblappointment = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tbloffered_treats = new javax.swing.JTable();
+        btn_search = new javax.swing.JButton();
+        txtphyname = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tbloffered_treats1 = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        txtPatientID_ForAppointmeant = new javax.swing.JTextField();
+        txtPatientID = new javax.swing.JTextField();
+        txtPatientAddress = new javax.swing.JTextField();
+        txtPatientCell = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnSignup = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblPatient = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtTreatmeantName = new javax.swing.JTextField();
+        txtRoomName = new javax.swing.JTextField();
+        txtPhysicianNAme = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
+        txtTime = new javax.swing.JTextField();
+        txtDisplayPatientCell = new javax.swing.JTextField();
+        txtDisplaypatientID = new javax.swing.JTextField();
+        txtDisplayPatientAddress = new javax.swing.JTextField();
+        txtDisplayPatientsName = new javax.swing.JTextField();
+        txtPatientName = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        btnBookAppointmeant = new javax.swing.JButton();
+        txtBookingID_for_appointmeant = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtDisplayTime = new javax.swing.JTextField();
+        txtDisplayDate = new javax.swing.JTextField();
+        txtDisplayPhyName = new javax.swing.JTextField();
+        txtDisplayRoomName = new javax.swing.JTextField();
+        txtDisplayTreatNAme = new javax.swing.JTextField();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txtVisitorNotes = new javax.swing.JTextField();
+        txtVisitorChoosenTime = new javax.swing.JTextField();
+        txtVisitorPhyName = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblVisitor = new javax.swing.JTable();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(504, 447));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(550, 550));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Click the expertise below to see all the avaliable physician  ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 27, -1, -1));
+
+        jButton1.setText("Physiotherapy");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jButton2.setText("Rehabilitation");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+
+        jButton3.setText("Osteopathy");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+
+        tblphy.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Area_of_Expertise", "Consultation_Hours 1", "Consultation_Hours 2", "ID_number", "Full_Name", "Address", "cell_number"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblphy);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 190));
+
+        jLabel2.setText("Enter The Physician Name To see Treatments provided");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        jLabel3.setText(" by him And His Consultation Hours:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        jButton4.setText("Clear Table Results");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
+
+        tblappointment.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Booking ID", "Patient ID", "Treatmeant Name", "Room Name", "Physician Name", "Date", "Time", "Booking Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblappointment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblappointmentMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblappointment);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 850, 790, 190));
+
+        tbloffered_treats.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Treatmeant Name", "Room Name", "Physician Name", "Date", "Time"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbloffered_treats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbloffered_treatsMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tbloffered_treats);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, 500, 190));
+
+        btn_search.setText("Search");
+        btn_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 80, 30));
+
+        txtphyname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtphyname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 100, 20));
+
+        tbloffered_treats1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Treatmeant Name", "Room Name", "Physician Name", "Consultation_Hours 1", "Consultation_Hours 2", "Date", "Time"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tbloffered_treats1);
+
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 800, 160));
+
+        jButton5.setText("Clear Table Results");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, -1, 20));
+
+        txtPatientID_ForAppointmeant.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPatientID_ForAppointmeant, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 920, 130, 20));
+
+        txtPatientID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPatientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 700, 90, 20));
+
+        txtPatientAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 630, 90, 20));
+
+        txtPatientCell.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPatientCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 700, 90, 20));
+
+        jLabel4.setText("Table To Book Appointmeant For the Patient");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 870, 220, -1));
+
+        jLabel5.setText("Enter Patient`s Cell Number");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 680, -1, -1));
+
+        jLabel6.setText("Enter Patient`s Address");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 610, -1, -1));
+
+        jLabel7.setText("Enter Patient`s ID ");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, -1, -1));
+
+        btnSignup.setText("Sign Up Patient ");
+        btnSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignupActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 620, 140, -1));
+
+        jLabel8.setText("____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 780, 1490, 20));
+
+        tblPatient.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Patient`s ID", "Patient`s Name", "Patient`s Address", "Patient`s Cell"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPatient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPatientMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblPatient);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, 450, 160));
+
+        jButton6.setText("Show Patient`s Data");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 660, 140, -1));
+
+        jButton7.setText("Clear Patient Data");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 700, 140, -1));
+
+        jLabel9.setText("____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 1470, 20));
+
+        txtTreatmeantName.setEditable(false);
+        txtTreatmeantName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtTreatmeantName, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 140, 120, 20));
+
+        txtRoomName.setEditable(false);
+        txtRoomName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtRoomName, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 170, 120, 20));
+
+        txtPhysicianNAme.setEditable(false);
+        txtPhysicianNAme.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPhysicianNAme, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 200, 120, 20));
+
+        txtDate.setEditable(false);
+        txtDate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 230, 120, 20));
+
+        txtTime.setEditable(false);
+        txtTime.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 260, 120, 20));
+
+        txtDisplayPatientCell.setEditable(false);
+        txtDisplayPatientCell.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtDisplayPatientCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 720, 100, 20));
+
+        txtDisplaypatientID.setEditable(false);
+        txtDisplaypatientID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtDisplaypatientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, 100, 20));
+
+        txtDisplayPatientAddress.setEditable(false);
+        txtDisplayPatientAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtDisplayPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, 100, 20));
+
+        txtDisplayPatientsName.setEditable(false);
+        txtDisplayPatientsName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtDisplayPatientsName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, 100, 20));
+
+        txtPatientName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 630, 90, 20));
+
+        jLabel12.setText("Enter Patients Name");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 610, -1, -1));
+
+        jLabel13.setText("Enter Patients ID And Select One Treatmeamt From Left ");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 850, -1, -1));
+
+        btnBookAppointmeant.setText("Book Appointmeant");
+        btnBookAppointmeant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookAppointmeantActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBookAppointmeant, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 950, 140, -1));
+
+        txtBookingID_for_appointmeant.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtBookingID_for_appointmeant, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 920, 140, 20));
+
+        jLabel14.setText("Enter Patient ID");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 900, -1, -1));
+
+        jLabel15.setText("Enter Booking ID");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 900, -1, -1));
+
+        txtDisplayTime.setEditable(false);
+        jPanel1.add(txtDisplayTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1000, 100, -1));
+
+        txtDisplayDate.setEditable(false);
+        jPanel1.add(txtDisplayDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 970, 100, -1));
+
+        txtDisplayPhyName.setEditable(false);
+        jPanel1.add(txtDisplayPhyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 940, 100, -1));
+
+        txtDisplayRoomName.setEditable(false);
+        jPanel1.add(txtDisplayRoomName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 910, 100, -1));
+
+        txtDisplayTreatNAme.setEditable(false);
+        jPanel1.add(txtDisplayTreatNAme, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 880, 100, -1));
+
+        jButton8.setText("Refresh Table To See Changes");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 1010, 180, -1));
+
+        jButton9.setText("Attend Appointmeant");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 950, -1, -1));
+
+        jButton10.setText("Cancel Appointmeant");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 980, -1, -1));
+
+        jButton11.setText("Change Appointmeant");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 980, 140, -1));
+
+        jLabel16.setText("_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 1490, 20));
+
+        jLabel10.setText("With The Physician Name To Book A Consultation As a Visitor");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, -1, -1));
+
+        jLabel11.setText("Enter a 30 Min Duration From The Given Consultation Time");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, -1, -1));
+
+        jButton12.setText("Book Consultation");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 540, -1, -1));
+
+        jLabel17.setText("Enter Notes IF Any (Visitor Name))");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 490, -1, -1));
+
+        jLabel18.setText("Enter 30 Min Choosen Time From");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 410, -1, -1));
+
+        jLabel19.setText("Enter Physician Name");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 410, -1, -1));
+        jPanel1.add(txtVisitorNotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, 140, -1));
+        jPanel1.add(txtVisitorChoosenTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 450, 80, -1));
+        jPanel1.add(txtVisitorPhyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 450, 70, -1));
+
+        jLabel20.setText(" Given 2 Hours Consultation Slot");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 430, 170, -1));
+
+        tblVisitor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Physician Name", "Choosen Time", "Notes"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(tblVisitor);
+
+        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 400, 340, 160));
+
+        jButton13.setText("Generate Report 2");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 860, -1, -1));
+
+        jButton14.setText("Generate Report 1");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 820, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel21.setText("For Booking Treatmeant Appointmeants ");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 810, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel23.setText("For Visitor Concultation");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel24.setText("For Adding Patients ");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 580, -1, -1));
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel25.setText("For Visitor Concultation");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, -1, -1));
+
+        jScrollPane8.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1105, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+        );
+
+        setBounds(0, 0, 1121, 534);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+
+        
+        for (int i =0 ; i < phy_array.length; i++) {
+            
+                   if(phy_array[i].getArea_of_expertise().equals("Physiotherapy")){
+                   String data[] = {phy_array[i].getArea_of_expertise(),phy_array[i].getConsultaion_hours1(),phy_array[i].getConsultaion_hours2(),phy_array[i].getID_number(),phy_array[i].getFull_name(),phy_array[i].getAddress(),phy_array[i].getCell_number()};
+                    tblmodel_phy = (DefaultTableModel)tblphy.getModel();
+                   tblmodel_phy.addRow(data);}
+        
+        }
+             for (int i =0 ; i < treat_array.length; i++) {
+                   if(treat_array[i].getPhy_details().getArea_of_expertise().equals("Physiotherapy")){
+                   String data_appointmeant[] = {treat_array[i].getBookingID(),treat_array[i].getPatient_id(),treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getDate(),treat_array[i].getTime(),treat_array[i].getBooking_status()};
+                    tblmodel_appointmeant = (DefaultTableModel)tblappointment.getModel();
+                   tblmodel_appointmeant.addRow(data_appointmeant);
+                   }
+        }
+             
+         for (int i =0 ; i < treat_array.length; i++) {
+                   if(treat_array[i].getPhy_details().getArea_of_expertise().equals("Physiotherapy")){
+                   String data_appointmeant[] = {treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getDate(),treat_array[i].getTime()};
+                    tblmodel_trt = (DefaultTableModel)tbloffered_treats.getModel();
+                   tblmodel_trt.addRow(data_appointmeant);
+                   }
+        }
+    
+            
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+             for (int i =0 ; i < phy_array.length; i++) {
+                   if(phy_array[i].getArea_of_expertise().equals("Osteopathy")){
+                   String data[] = {phy_array[i].getArea_of_expertise(),phy_array[i].getConsultaion_hours1(),phy_array[i].getConsultaion_hours2(),phy_array[i].getID_number(),phy_array[i].getFull_name(),phy_array[i].getAddress(),phy_array[i].getCell_number()};
+                    tblmodel_phy = (DefaultTableModel)tblphy.getModel();
+                   tblmodel_phy.addRow(data);
+                   }
+        }
+              for (int i =0 ; i <treat_array.length; i++) {
+                   if(treat_array[i].getPhy_details().getArea_of_expertise().equals("Osteopathy")){
+                   String data_appointmeant[] = {treat_array[i].getBookingID(),treat_array[i].getPatient_id(),treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getDate(),treat_array[i].getTime(),treat_array[i].getBooking_status()};
+                    tblmodel_appointmeant = (DefaultTableModel)tblappointment.getModel();
+                   tblmodel_appointmeant.addRow(data_appointmeant);
+                   }
+        }
+        
+            for (int i =0 ; i < treat_array.length; i++) {
+                   if(treat_array[i].getPhy_details().getArea_of_expertise().equals("Osteopathy")){
+                   String data_appointmeant[] = {treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getDate(),treat_array[i].getTime()};
+                    tblmodel_trt = (DefaultTableModel)tbloffered_treats.getModel();
+                   tblmodel_trt.addRow(data_appointmeant);
+                   }
+        }
+    
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+           
+             for (int i =0 ; i < phy_array.length; i++) {
+                   if(phy_array[i].getArea_of_expertise().equals("Rehabilitation")){
+                   String data[] = {phy_array[i].getArea_of_expertise(),phy_array[i].getConsultaion_hours1(),phy_array[i].getConsultaion_hours2(),phy_array[i].getID_number(),phy_array[i].getFull_name(),phy_array[i].getAddress(),phy_array[i].getCell_number()};
+                    tblmodel_phy = (DefaultTableModel)tblphy.getModel();
+                   tblmodel_phy.addRow(data);
+                   }
+        }
+            
+               for (int i =0 ; i < treat_array.length; i++) {
+                   if(treat_array[i].getPhy_details().getArea_of_expertise().equals("Rehabilitation")){
+                   String data_appointmeant[] = {treat_array[i].getBookingID(),treat_array[i].getPatient_id(),treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getDate(),treat_array[i].getTime(),treat_array[i].getBooking_status()};
+                    tblmodel_appointmeant = (DefaultTableModel)tblappointment.getModel();
+                   tblmodel_appointmeant.addRow(data_appointmeant);
+                   }
+        }
+          for (int i =0 ; i < treat_array.length; i++) {
+                   if(treat_array[i].getPhy_details().getArea_of_expertise().equals("Rehabilitation")){
+                   String data_appointmeant[] = {treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getDate(),treat_array[i].getTime()};
+                    tblmodel_trt = (DefaultTableModel)tbloffered_treats.getModel();
+                   tblmodel_trt.addRow(data_appointmeant);
+                   }
+        }
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+   // TODO add your handling code here:
+   
+   tblmodel_phy.getDataVector().removeAllElements();    
+   tblmodel_phy.fireTableDataChanged();
+   
+   tblmodel_trt.getDataVector().removeAllElements();    
+   tblmodel_trt.fireTableDataChanged();
+   
+      tblmodel_appointmeant.getDataVector().removeAllElements();    
+   tblmodel_appointmeant.fireTableDataChanged();
+  
+      
+   
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+        // TODO add your handling code here:
+             for (int i =0 ; i < treat_array.length; i++) {
+                   if(treat_array[i].getPhy_details().getFull_name().equals(txtphyname.getText())){
+                   String data_appointmeant[] = {treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getPhy_details().getConsultaion_hours1(),treat_array[i].getPhy_details().getConsultaion_hours2(),treat_array[i].getDate(),treat_array[i].getTime()};
+                    tblmodel_trt2 = (DefaultTableModel)tbloffered_treats1.getModel();
+                   tblmodel_trt2.addRow(data_appointmeant);
+                   }
+        }
+    
+        
+        
+    }//GEN-LAST:event_btn_searchActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+         tblmodel_trt2.getDataVector().removeAllElements();    
+   tblmodel_trt2.fireTableDataChanged();
+        
+
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
+        // TODO add your handling code here:
+        
+        System.out.println(patient_arrays.length);
+        
+        add_new_patient();
+       
+        
+    }//GEN-LAST:event_btnSignupActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+         for (int i =0 ; i < patient_arrays.length; i++) {
+           
+                   String data[] = {patient_arrays[i].getID_number(),patient_arrays[i].getFull_name(),patient_arrays[i].getAddress(),patient_arrays[i].getCell_number() };
+                    tblmodel_patients = (DefaultTableModel)tblPatient.getModel();
+                   tblmodel_patients.addRow(data);
+        
+        }
+         
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        tblmodel_patients.getDataVector().removeAllElements();
+        tblmodel_patients.fireTableDataChanged();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void tblPatientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientMouseClicked
+        // TODO add your handling code here:
+        
+txtDisplaypatientID.setText(tblPatient.getModel().getValueAt(tblPatient.getSelectedRow(), 0).toString());
+txtDisplayPatientsName.setText(tblPatient.getModel().getValueAt(tblPatient.getSelectedRow(), 1).toString());
+txtDisplayPatientAddress.setText(tblPatient.getModel().getValueAt(tblPatient.getSelectedRow(), 2).toString());
+txtDisplayPatientCell.setText(tblPatient.getModel().getValueAt(tblPatient.getSelectedRow(), 3).toString());
+
+
+    }//GEN-LAST:event_tblPatientMouseClicked
+
+    private void tbloffered_treatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbloffered_treatsMouseClicked
+        // TODO add your handling code here:
+txtTreatmeantName.setText(tbloffered_treats.getModel().getValueAt(tbloffered_treats.getSelectedRow(), 0).toString());
+txtRoomName.setText(tbloffered_treats.getModel().getValueAt(tbloffered_treats.getSelectedRow(), 1).toString());
+txtPhysicianNAme.setText(tbloffered_treats.getModel().getValueAt(tbloffered_treats.getSelectedRow(), 2).toString());
+txtDate.setText(tbloffered_treats.getModel().getValueAt(tbloffered_treats.getSelectedRow(), 3).toString());
+txtTime.setText(tbloffered_treats.getModel().getValueAt(tbloffered_treats.getSelectedRow(), 4).toString());
+
+        
+        
+    }//GEN-LAST:event_tbloffered_treatsMouseClicked
+
+    private void btnBookAppointmeantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmeantActionPerformed
+        // TODO add your handling code here:
+      
+     book_appointmeant();
+   
+    }//GEN-LAST:event_btnBookAppointmeantActionPerformed
+
+    private void tblappointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblappointmentMouseClicked
+        // TODO add your handling code here:
+        
+    
+        txtBookingID_for_appointmeant.setText(tblappointment.getModel().getValueAt(tblappointment.getSelectedRow(), 0).toString());
+txtPatientID_ForAppointmeant.setText(tblappointment.getModel().getValueAt(tblappointment.getSelectedRow(), 1).toString());
+    
+txtDisplayTreatNAme.setText(tblappointment.getModel().getValueAt(tblappointment.getSelectedRow(), 2).toString());
+txtDisplayRoomName.setText(tblappointment.getModel().getValueAt(tblappointment.getSelectedRow(), 3).toString());
+txtDisplayPhyName.setText(tblappointment.getModel().getValueAt(tblappointment.getSelectedRow(), 4).toString());
+txtDisplayDate.setText(tblappointment.getModel().getValueAt(tblappointment.getSelectedRow(), 5).toString());
+txtDisplayTime.setText(tblappointment.getModel().getValueAt(tblappointment.getSelectedRow(), 6).toString());
+
+     
+    }//GEN-LAST:event_tblappointmentMouseClicked
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        
+       
+        tblmodel_appointmeant.getDataVector().removeAllElements();
+        tblmodel_appointmeant.fireTableDataChanged();
+        
+        /*
+                    if(!(treat_array[i].getBookingID().equals("none"))){
+            for(int k = 0 ; k<treat_array.length; k++){
+            if (treat_array[i].getPatient_id().equals(treat_array[k].getPatient_id())&&treat_array[i].getDate().equals(treat_array[k].getDate())){
+                System.out.println("i"+ treat_array[i].getPatient_id());
+                System.out.println("k"+ treat_array[k].getPatient_id());
+                
+                  System.out.println("ii"+ treat_array[i].getDate());
+                  System.out.println("kk"+ treat_array[k].getDate());
+                
+                
+                JOptionPane.showMessageDialog(this, "SORRY, You can not attent 2 Appointmeants at the same time, do not try to fool us, 0 _ 0");
+                
+            }
+            }
+                    }
+        
+        */
+        
+                         // String data[] = new String[10];
+        ArrayList<String> data_check = new ArrayList<String>();
+        
+        
+        for(int k = 0 ; k <treat_array.length ;k++){
+        if(treat_array[k].getBooking_status().equals("BOOKED")){
+        data_check.add(treat_array[k].getPatient_id()+  treat_array[k].getTime())  ;
+            System.out.println("asda"+data_check );        
+        }
+        
+        }
+        
+     /*   
+        for(int m = 0 ; m <data.length; m++ ){
+        
+            for(int n = 0 ; n<data.length ; n++ ){
+                if(data[m].equals(data[n])){
+                JOptionPane.showMessageDialog(this, "same data found");
+                }
+            }
+            
+        }
+       */ 
+        
+ 
+         for (int i =0 ; i < treat_array.length; i++) {
+                   
+                   String data_appointmeant[] = {treat_array[i].getBookingID(),treat_array[i].getPatient_id(),treat_array[i].getTreatmeant_name(),treat_array[i].getTreatmeant_room().getroom_name(),treat_array[i].getPhy_details().getFull_name(),treat_array[i].getDate(),treat_array[i].getTime(),treat_array[i].getBooking_status()};
+                    tblmodel_appointmeant = (DefaultTableModel)tblappointment.getModel();
+               
+                   tblmodel_appointmeant.addRow(data_appointmeant);
+                   
+        }
+        
+        if((error != 1)){
+                 for (int i = 0; i < data_check.size(); i++) {
+    for (int k = i + 1; k < data_check.size(); k++) {
+        if (data_check.get(i).equals(data_check.get(k))) {
+            //do stuff
+            treat_array[global_index].setBookingID("none");
+                   treat_array[global_index].setPatient_id("none");   
+                   treat_array[global_index].setBooking_status("Not Booked");
+            JOptionPane.showMessageDialog(this, "You Can Not Attend 2 Apointmeants At The Same Time Do Not Fool The Computer,┌( ͝° ͜ʖ͡°)=ε/̵͇̿̿/’̿’̿ ̿  , Refresh The Table Again After This Message");
+            
+        }
+    }
+}
+        }
+        error++;
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        attend_appointmeant();
+      
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        
+        cancel_appointmeant();
+               
+               
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        change_appointmeant();
+        
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        int phy_index=0;
+        
+        for(int i =0 ; i<phy_array.length;i++){
+        
+            if(txtVisitorPhyName.getText().equals(phy_array[i].getFull_name())){
+            phy_index=i;
+            break;
+            }
+            
+        }
+        
+        System.out.println("OO"+phy_array[phy_index].getFull_name());
+        
+       String hours1_notSorted = phy_array[phy_index].getConsultaion_hours1();
+       String hours2_notSorted = phy_array[phy_index].getConsultaion_hours2();
+
+  
+  String[] hours1_Sorted = hours1_notSorted.split(",");
+    String[] hours2_Sorted = hours2_notSorted.split(",");
+
+  
+String hour1 = hours1_Sorted[0];
+String hour2 = hours1_Sorted[1];
+String hour3 = hours1_Sorted[2];
+String hour4 = hours1_Sorted[3];
+
+ 
+       
+  
+String hour11 = hours2_Sorted[0];
+String hour22 = hours2_Sorted[1];
+String hour33 = hours2_Sorted[2];
+String hour44 = hours2_Sorted[3];
+
+
+  //System.out.println(hours1_Sorted);
+System.out.println(hour1);
+System.out.println(hour2);
+
+       
+       
+        if(txtVisitorChoosenTime.getText().equals(hour1)||txtVisitorChoosenTime.getText().equals(hour2)||txtVisitorChoosenTime.getText().equals(hour3)||txtVisitorChoosenTime.getText().equals(hour4)||txtVisitorChoosenTime.getText().equals(hour11)||txtVisitorChoosenTime.getText().equals(hour22)||txtVisitorChoosenTime.getText().equals(hour33)||txtVisitorChoosenTime.getText().equals(hour44)){
+        
+        String data[] = {txtVisitorPhyName.getText(),txtVisitorChoosenTime.getText(),txtVisitorNotes.getText() };
+        tblmodel_Visitorbooking = (DefaultTableModel)tblVisitor.getModel();
+        tblmodel_Visitorbooking.addRow(data);
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(this, "SORRY, Physician Not Available");
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+                          System.out.println("************************************* REPORT 2 ************************************* ");
+                          System.out.println("BOOKING ID"+"\t"+"PATIENT ID"+"\t"+"BOOKING STATUS");
+
+            for (int i =0 ; i < treat_array.length; i++) {
+                   if(!(treat_array[i].getBookingID().equals("none")))
+                  System.out.println(treat_array[i].getBookingID()+"\t"+"\t"+treat_array[i].getPatient_id()+"\t"+"\t"+treat_array[i].getBooking_status());
+                   
+        }
+        
+                                  System.out.println("************************************* REPORT 2 END********************************** ");
+
+       
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("************************************* REPORT 1 ALL TREATMEANT APPOINTMEANTS ************************************* ");
+                          System.out.println("PHYSICIAN NAME"+"\t"+"\t"+"TREATMEANT NAME"+"\t"+"\t"+"PATIENT ID"+"\t"+"\t"+"TIME"+"\t"+"\t"+"ROOM");
+
+                          
+      
+                           
+            for (int i =0 ; i < treat_array.length; i++) {
+                
+               
+                   if(!(treat_array[i].getBookingID().equals("none")))
+                  System.out.println("("+treat_array[i].getPhy_details().getFull_name()+")"+"\t"+"|"+"\t"+"("+treat_array[i].getTreatmeant_name()+")"+"\t"+"|"+"\t"+"("+treat_array[i].getPatient_id()+")" +"\t"+"|"+"\t"+"("+treat_array[i].getTime()+")"+"\t"+"|"+"\t"+"("+treat_array[i].getTreatmeant_room().getroom_name()+")");
+                   
+        }
+                System.out.println("************************************* REPORT 1 VISITOR APPOINTMEANTS ************************************* ");
+                          System.out.println("PHYSICIAN NAME"+"\t"+"TIME"+"\t"+"NOTES");
+
+                for(int i = 0 ; i < tblVisitor.getModel().getRowCount(); i++){
+                
+                    
+                 System.out.println("("+tblVisitor.getModel().getValueAt(i, 0)+")"+"\t"+"|"+"\t"+"("+tblVisitor.getModel().getValueAt(i, 1)+")"+"\t"+"|"+"\t"+"("+tblVisitor.getModel().getValueAt(i, 2)+")");
+
+                
+                }
+                
+            
+                
+                                  System.out.println("************************************* REPORT 1 END********************************** ");
+
+      
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    /**
+     * @param args the command line argument s    
+     * 
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(treatmean_Apointmeant_tbooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(treatmean_Apointmeant_tbooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(treatmean_Apointmeant_tbooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(treatmean_Apointmeant_tbooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new treatmean_Apointmeant_tbooking().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBookAppointmeant;
+    private javax.swing.JButton btnSignup;
+    private javax.swing.JButton btn_search;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPatient;
+    private javax.swing.JTable tblVisitor;
+    private javax.swing.JTable tblappointment;
+    private javax.swing.JTable tbloffered_treats;
+    private javax.swing.JTable tbloffered_treats1;
+    private javax.swing.JTable tblphy;
+    private javax.swing.JTextField txtBookingID_for_appointmeant;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtDisplayDate;
+    private javax.swing.JTextField txtDisplayPatientAddress;
+    private javax.swing.JTextField txtDisplayPatientCell;
+    private javax.swing.JTextField txtDisplayPatientsName;
+    private javax.swing.JTextField txtDisplayPhyName;
+    private javax.swing.JTextField txtDisplayRoomName;
+    private javax.swing.JTextField txtDisplayTime;
+    private javax.swing.JTextField txtDisplayTreatNAme;
+    private javax.swing.JTextField txtDisplaypatientID;
+    private javax.swing.JTextField txtPatientAddress;
+    private javax.swing.JTextField txtPatientCell;
+    private javax.swing.JTextField txtPatientID;
+    private javax.swing.JTextField txtPatientID_ForAppointmeant;
+    private javax.swing.JTextField txtPatientName;
+    private javax.swing.JTextField txtPhysicianNAme;
+    private javax.swing.JTextField txtRoomName;
+    private javax.swing.JTextField txtTime;
+    private javax.swing.JTextField txtTreatmeantName;
+    private javax.swing.JTextField txtVisitorChoosenTime;
+    private javax.swing.JTextField txtVisitorNotes;
+    private javax.swing.JTextField txtVisitorPhyName;
+    private javax.swing.JTextField txtphyname;
+    // End of variables declaration//GEN-END:variables
+
+public  void add_new_patient(){
+
+        patient_arrays[count] = new Patient(txtPatientID.getText(),txtPatientName.getText(), txtPatientAddress.getText(),txtPatientCell.getText());
+        
+        tblmodel_patients.fireTableDataChanged();
+        System.out.println("patient added");
+        count++;
+
+}
+
+    
+    public void  book_appointmeant(){
+        
+                       
+        
+          int j;
+        for( j = 0 ; j <treat_array.length; j++){
+            if(txtDisplayDate.getText().equals(treat_array[j].getDate())&&txtDisplayPhyName.getText().equals(treat_array[j].getPhy_details().getFull_name())){
+            index_for_booking = j;
+            global_index = j;
+                break;
+           }
+        }
+        
+        System.out.println("value of j" +j);
+               for (int i =0 ; i < patient_arrays.length; i++) {
+                   if(txtPatientID_ForAppointmeant.getText().toString().equals(patient_arrays[i].getID_number().toString())){
+                       System.out.println("patient found");
+                       
+                       
+                   treat_array[j].setBookingID(txtBookingID_for_appointmeant.getText());
+                   treat_array[j].setPatient_id(txtPatientID_ForAppointmeant.getText());   
+                   treat_array[j].setBooking_status("BOOKED");
+                       System.out.println(txtBookingID_for_appointmeant.getText());
+                       System.out.println(txtPatientID_ForAppointmeant.getText());
+                   }
+
+        }
+   
+        
+        }
+        
+  
+    
+    
+    
+
+public  void attend_appointmeant(){
+
+  
+          int j;
+        for( j = 0 ; j <treat_array.length; j++){
+            if(txtPatientID_ForAppointmeant.getText().equals(treat_array[j].getPatient_id())){
+            index_for_booking = j;
+                break;
+           }
+        }
+        
+   
+               for (int i =0 ; i < patient_arrays.length; i++) {
+                   if(txtPatientID_ForAppointmeant.getText().toString().equals(patient_arrays[i].getID_number().toString())){
+                   
+                
+                   treat_array[j].setBooking_status("ATTENDED");
+                     
+                   }
+        }
+   
+
+}
+
+
+    public  void change_appointmeant() {
+        
+            
+             int j;
+        for( j = 0 ; j <treat_array.length; j++){
+            if(txtDisplayDate.getText().equals(treat_array[j].getDate())){
+            index_for_booking = j;
+                break;
+           }
+        }
+        
+        System.out.println("value of j" +j);
+               for (int i =0 ; i < patient_arrays.length; i++) {
+                   if(txtPatientID_ForAppointmeant.getText().toString().equals(patient_arrays[i].getID_number().toString())){
+                       System.out.println("patient found");
+                       
+                       
+                   treat_array[j].setBookingID(txtBookingID_for_appointmeant.getText());
+                   treat_array[j].setPatient_id(txtPatientID_ForAppointmeant.getText());   
+                   treat_array[j].setBooking_status("CHANGED");
+                       System.out.println(txtBookingID_for_appointmeant.getText());
+                       System.out.println(txtPatientID_ForAppointmeant.getText());
+                   }
+
+        }
+        
+        
+    }
+
+    public void cancel_appointmeant() {
+         
+        
+          int j;
+        for( j = 0 ; j <treat_array.length; j++){
+            if(txtPatientID_ForAppointmeant.getText().equals(treat_array[j].getPatient_id())){
+            index_for_booking = j;
+                break;
+           }
+        }
+        
+        
+        System.out.println("value of j" +j);
+               for (int i =0 ; i < patient_arrays.length; i++) {
+                   if(txtPatientID_ForAppointmeant.getText().toString().equals(patient_arrays[i].getID_number().toString())){
+                       System.out.println("patient found");
+                       
+                       
+                   treat_array[j].setBookingID("none");
+                   treat_array[j].setPatient_id("none");   
+                   treat_array[j].setBooking_status("CANCELLED");
+                       
+                   }
+
+        }
+   
+               
+    }
+    
+}
+
+
+
